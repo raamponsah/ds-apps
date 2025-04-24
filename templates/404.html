@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="container py-5 text-center">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <img src="{% static 'spool_app/images/cbg.png' %}" alt="logo" class="img-fluid mb-4" style="max-height: 80px;">
+      <h1 class="display-4 text-danger mb-3">Oops!</h1>
+      <p class="lead">The page you’re looking for doesn't exist or has been moved.</p>
+      <p class="text-muted">Error 404 — Page Not Found</p>
+      <a href="{% url 'spool_list' %}" class="btn btn-outline-primary mt-3">Go Back Home</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container py-5">
+  <div class="text-center">
+    <img src="{% static 'spool_app/images/cbg.png' %}" alt="logo" style="max-height: 60px;">
+    <h1 class="display-5 mt-4 text-danger">500 Internal Server Error</h1>
+    <p class="lead">{{ message }}</p>
+    <a href="{% url 'spool_list' %}" class="btn btn-outline-secondary mt-3">Go Back Home</a>
+  </div>
+</div>
+{% endblock %}
