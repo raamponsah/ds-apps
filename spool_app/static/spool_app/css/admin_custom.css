@@ -1,26 +1,40 @@
-/* admin_custom.css */
-body {
-    background-color: #f7f9fc;
-}
-
-.module caption {
-    color: #2a3f54;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
+/* Make the header red */
 #header {
-    width: auto;
-    height: auto;
-    display: flex
-;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    background: #ba2121;
-    color: var(--header-color);
+    background-color: #8B0000; /* dark red */
+    color: white;
 }
 
-#branding h1 {
-    color: #ffffff;
+/* Change the logo text color */
+#header .branding h1 {
+    color: white;
 }
+
+/* Sidebar */
+#nav-sidebar {
+    background-color: #111;
+    color: white;
+}
+
+#nav-sidebar a {
+    color: #ff4c4c; /* lighter red */
+}
+#nav-sidebar a:hover {
+    background-color: #330000;
+}
+
+/* Main content area */
+#content {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+/* Table headers and rows */
+table thead th {
+    background-color: #8B0000;
+    color: white;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+table tbody tr

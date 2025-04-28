@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+{% include 'partials/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+{# Generate some cards for each app #}
+
+<div class="container">
+<div class="row mb-10">
+    <h3 class="text-decoration-underline mb-4">Apps</h3>
+</div>
+<div class="row">
+  {% for app in apps %}
+    {% if app.status == 'active' or app.status == "maintenance" %}
+    <a href="{{ app.link }}" class="col-md-4 col-lg-3 mb-4 text-decoration-none">
+<div class="card shadow" style="{% if app.status == 'active' %}border-top: 4px solid #1d7a01; max-width: 18rem; position: relative;{% else %}border-top: 4px solid #000; max-width: 18rem; position: relative;{% endif %}">
+
+          {% if app.status == "active" %}
+        <small class="badge bg-success position-absolute" style="top: 10px; right: 10px;">{{ app.status | title }}</small> <!-- Badge for 'Active' status -->
+              {% else %}
+        <small class="badge bg-dark position-absolute" style="top: 10px; right: 10px;">{{ app.status | title }}</small> <!-- Badge for 'Active' status -->
+              {% endif %}
+          <div class="card-body">
+          <h6 class="card-title">{{ app.name }}</h6>
+          {# You can uncomment and display the description if needed #}
+          {# <small class="card-text" style="font-size: 12px">{{ app.description }}</small> #}
+        </div>
+      </div>
+    </a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+</div>
+
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

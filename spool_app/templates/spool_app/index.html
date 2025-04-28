@@ -3,41 +3,7 @@
 {% load user_filters %}
 
 {% block navbar %}
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-                  <img src="{% static 'spool_app/images/cbg.png' %}" alt="logo" class="img-fluid" style="max-height: 40px;">
-
-            Spooled Reports</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          {% if user.is_authenticated %}
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-{#                  <img src="{% static 'img/avatar.png' %}" alt="avatar" class="avatar me-2">#}
-                  {{ user.username | username_to_fullname}}
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="userDropdown">
-                  <li>
-                      <form method="post" action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-link text-decoration-none text-white p-10 m-0 align-baseline">Log Out</button>
-
-                    </form>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          {% else %}
-{#            <a href="{% url 'login' %}" class="btn btn-outline-light">Login</a>#}
-          {% endif %}
-        </div>
-      </div>
-    </nav>
+    {% include 'partials/navbar.html' %}
 {% endblock %}
 
 {% block content %}
@@ -46,7 +12,8 @@
         <div class="col-lg-10">
             <div class="card shadow rounded-1" style="border-top: 4px solid #dc3545;">
                 <div class="card-body">
-                    <h4 class="text-center mb-4">Available Reports</h4>
+                    <h4 class="text-center mb-4">Available Spooled Reports</h4>
+{#                <small class="text-center text-muted">(These spooled reports you can access)</small>#}
                     <div class="table-responsive">
                         <table class="table table-striped table-hover align-middle">
                             <thead class="table-dark">
@@ -59,7 +26,7 @@
                             </thead>
                             <tbody>
                                 {% for spool in spools %}
-                                    {% if user.email in spool.all_access_list %}
+{#                                    {% if user.email in spool.all_access_list %}#}
                                             <tr>
                                     <form action="{% url 'report_gen' spool.report_code %}" method="post" class="align-middle">
                                         {% csrf_token %}
@@ -101,7 +68,7 @@
                                         </td>
                                     </form>
                                 </tr>
-                                    {% endif %}
+{#                                    {% endif %}#}
                                 {% empty %}
                                 <tr>
                                     <td colspan="5" class="text-center text-muted">No reports found.</td>
