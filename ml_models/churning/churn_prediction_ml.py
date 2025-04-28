@@ -24,6 +24,7 @@ required_columns = [
     'satisfaction_rating', 'has_rel_manager', 'sector', 'monthly_fees'
 ]
 
+
 def handle_missing_values(df):
     """Handle missing values in the DataFrame."""
     for col in df.columns:
@@ -32,6 +33,7 @@ def handle_missing_values(df):
         else:
             df[col].fillna(df[col].mode()[0], inplace=True)
     return df
+
 
 def handle_outliers(df, numerical_cols):
     """Cap outliers using IQR method."""
@@ -43,6 +45,7 @@ def handle_outliers(df, numerical_cols):
         upper_bound = Q3 + 1.5 * IQR
         df[col] = df[col].clip(lower_bound, upper_bound)
     return df
+
 
 def train_churn_model_from_file(file_path):
     """Train a churn prediction model from a CSV file."""
@@ -89,7 +92,8 @@ def train_churn_model_from_file(file_path):
         # Handle class imbalance with SMOTE
         smote = SMOTE(random_state=42)
         X, y = smote.fit_resample(X, y)
-        logger.info(f"After SMOTE - Feature matrix shape: {X.shape}, Class balance: {pd.Series(y).value_counts(normalize=True).to_dict()}")
+        logger.info(
+            f"After SMOTE - Feature matrix shape: {X.shape}, Class balance: {pd.Series(y).value_counts(normalize=True).to_dict()}")
 
         # Train-test split
         X_train, X_test, y_train, y_test = train_test_split(
@@ -160,14 +164,16 @@ def train_churn_model_from_file(file_path):
         logger.error(f"Error in train_churn_model_from_file: {str(e)}")
         raise
 
-def get_verdict_from_f1(f1_score):
+
+def get_verdict_from_f1(f1_):
     """Return a verdict based on F1 score."""
-    if f1_score < 0.3:
+    if f1_ < 0.3:
         return "❌ Poor"
-    elif f1_score < 0.6:
+    elif f1_ < 0.6:
         return "⚠️ Fair"
     else:
         return "✅ Good"
+
 
 def run_churn_test(df, dj_model):
     """Run churn prediction on a test DataFrame."""

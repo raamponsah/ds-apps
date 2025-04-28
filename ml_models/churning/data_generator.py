@@ -1,94 +1,107 @@
 import pandas as pd
 import numpy as np
+from faker import Faker
+from sklearn.datasets import make_classification
+from datetime import date, timedelta
+import random
 
-# Set random seed for reproducibility
-np.random.seed(42)
-
-# Define constants
-TRAIN_SIZE = 10000
-TEST_SIZE = 2000
-CHURN_RATE = 0.15  # ~15% churn rate
-MISSING_RATE = 0.05  # 5% missing values
-
-# Define categorical value options
-gender_options = ['Male', 'Female']
-region_options = ['North', 'South', 'East', 'West', 'Central']
-marital_status_options = ['Single', 'Married', 'Divorced', 'Widowed']
-occupation_options = ['Engineer', 'Teacher', 'Doctor', 'Business', 'Student', 'Retired', 'Other']
-education_options = ['High School', 'Bachelor', 'Master', 'PhD']
-account_type_options = ['Savings', 'Checking', 'Business', 'Investment']
-sector_options = ['Technology', 'Finance', 'Healthcare', 'Education', 'Retail', 'Other']
+# Initialize faker for realistic fake data
+fake = Faker()
 
 
-# Function to generate synthetic data
-def generate_data(n_samples, churn_rate):
-    data = {}
+def generate_customer_data(num_samples=10000, churn_rate=0.2, random_state=42):
+    """Generate synthetic customer data with realistic churn patterns"""
+    np.random.seed(random_state)
+    random.seed(random_state)
 
-    # Numerical features
-    data['age'] = np.random.normal(40, 10, n_samples).clip(18, 80).astype(int)
-    data['dependents'] = np.random.poisson(1.5, n_samples).clip(0, 5).astype(int)
-    data['account_age_months'] = np.random.exponential(36, n_samples).clip(1, 120).astype(int)
-    data['num_products'] = np.random.randint(1, 6, n_samples)
-    data['avg_balance'] = np.random.lognormal(mean=8, sigma=1, size=n_samples).clip(100, 100000)
-    data['monthly_mobile_logins'] = np.random.poisson(10, n_samples).clip(0, 50).astype(int)
-    data['atm_txns_per_month'] = np.random.poisson(5, n_samples).clip(0, 20).astype(int)
-    data['monthly_deposits'] = np.random.lognormal(mean=7, sigma=1, size=n_samples).clip(0, 50000)
-    data['monthly_withdrawals'] = np.random.lognormal(mean=6, sigma=1, size=n_samples).clip(0, 40000)
-    data['monthly_transfers'] = np.random.lognormal(mean=5, sigma=1, size=n_samples).clip(0, 30000)
-    data['loan_repayment_history'] = np.random.beta(8, 2, n_samples).clip(0, 1)  # Skewed toward good repayment
-    data['complaints_count'] = np.random.poisson(0.5, n_samples).clip(0, 10).astype(int)
-    data['days_since_last_complaint'] = np.random.exponential(180, n_samples).clip(0, 365).astype(int)
-    data['satisfaction_rating'] = np.random.normal(3.5, 1, n_samples).clip(1, 5)
-    data['monthly_fees'] = np.random.lognormal(mean=2, sigma=1, size=n_samples).clip(0, 100)
+    # Base customer characteristics
+    data = {
+        'customer_id': [fake.uuid4() for _ in range(num_samples)],
+        'age': np.random.randint(18, 80, size=num_samples),
+        'gender': np.random.choice(['Male', 'Female', 'Other'], size=num_samples, p=[0.48, 0.5, 0.02]),
+        'region': np.random.choice(['North', 'South', 'East', 'West'], size=num_samples),
+        'marital_status': np.random.choice(['Single', 'Married', 'Divorced', 'Widowed'],
+                                           size=num_samples, p=[0.3, 0.5, 0.15, 0.05]),
+        'occupation': np.random.choice([
+            'Employed', 'Self-employed', 'Student', 'Retired', 'Unemployed'
+        ], size=num_samples, p=[0.6, 0.15, 0.1, 0.1, 0.05]),
+        'education': np.random.choice([
+            'High School', 'College', 'Bachelor', 'Master', 'PhD'
+        ], size=num_samples, p=[0.2, 0.3, 0.3, 0.15, 0.05]),
+        'dependents': np.random.poisson(1.2, size=num_samples),
+        'account_type': np.random.choice(['Savings', 'Checking', 'Premium'],
+                                         size=num_samples, p=[0.6, 0.35, 0.05]),
+        'account_age_months': np.random.randint(1, 120, size=num_samples),
+        'num_products': np.random.randint(1, 5, size=num_samples),
+        'avg_balance': np.round(np.abs(np.random.normal(5000, 3000, size=num_samples)), 2),
+        'is_dormant': np.random.choice([0, 1], size=num_samples, p=[0.9, 0.1]),
+        'mobile_banking_active': np.random.choice([0, 1], size=num_samples, p=[0.3, 0.7]),
+        'monthly_mobile_logins': np.random.poisson(8, size=num_samples),
+        'ussd_usage': np.random.choice([0, 1], size=num_samples, p=[0.4, 0.6]),
+        'internet_banking_active': np.random.choice([0, 1], size=num_samples, p=[0.5, 0.5]),
+        'atm_txns_per_month': np.random.poisson(3, size=num_samples),
+        'account_linkage_active': np.random.choice([0, 1], size=num_samples, p=[0.7, 0.3]),
+        'monthly_deposits': np.round(np.abs(np.random.normal(1500, 800, size=num_samples)), 2),
+        'monthly_withdrawals': np.round(np.abs(np.random.normal(1200, 600, size=num_samples)), 2),
+        'monthly_transfers': np.round(np.abs(np.random.normal(800, 400, size=num_samples)), 2),
+        'loan_repayment_history': np.random.uniform(0, 1, size=num_samples),
+        'complaints_count': np.random.poisson(0.5, size=num_samples),
+        'days_since_last_complaint': np.random.choice(
+            [np.random.randint(1, 365) for _ in range(num_samples)] + [365 * 2],
+            size=num_samples, p=[0.3 / num_samples] * num_samples + [0.7]),
+        'satisfaction_rating': np.random.randint(1, 6, size=num_samples),
+        'has_rel_manager': np.random.choice([0, 1], size=num_samples, p=[0.8, 0.2]),
+        'sector': np.random.choice([
+            'Retail', 'Technology', 'Healthcare', 'Education', 'Manufacturing', 'Other'
+        ], size=num_samples),
+        'monthly_fees': np.round(np.abs(np.random.normal(10, 5, size=num_samples)), 2)
+    }
 
-    # Categorical features
-    data['gender'] = np.random.choice(gender_options, n_samples, p=[0.5, 0.5])
-    data['region'] = np.random.choice(region_options, n_samples, p=[0.2, 0.2, 0.2, 0.2, 0.2])
-    data['marital_status'] = np.random.choice(marital_status_options, n_samples, p=[0.4, 0.4, 0.1, 0.1])
-    data['occupation'] = np.random.choice(occupation_options, n_samples, p=[0.2, 0.2, 0.1, 0.2, 0.1, 0.1, 0.1])
-    data['education'] = np.random.choice(education_options, n_samples, p=[0.3, 0.4, 0.2, 0.1])
-    data['account_type'] = np.random.choice(account_type_options, n_samples, p=[0.4, 0.3, 0.2, 0.1])
-    data['sector'] = np.random.choice(sector_options, n_samples, p=[0.2, 0.2, 0.2, 0.2, 0.1, 0.1])
-
-    # Boolean features
-    data['is_dormant'] = np.random.choice([True, False], n_samples, p=[0.1, 0.9])
-    data['mobile_banking_active'] = np.random.choice([True, False], n_samples, p=[0.7, 0.3])
-    data['ussd_usage'] = np.random.choice([True, False], n_samples, p=[0.4, 0.6])
-    data['internet_banking_active'] = np.random.choice([True, False], n_samples, p=[0.6, 0.4])
-    data['account_linkage_active'] = np.random.choice([True, False], n_samples, p=[0.3, 0.7])
-    data['has_rel_manager'] = np.random.choice([True, False], n_samples, p=[0.2, 0.8])
-
-    # Generate churned (target) with some logic based on features
-    # Higher churn probability for: low satisfaction, high complaints, dormant accounts, low balance
-    churn_prob = (
-            0.3 * (data['satisfaction_rating'] < 2.5) +
-            0.2 * (data['complaints_count'] > 2) +
-            0.2 * data['is_dormant'] +
-            0.2 * (data['avg_balance'] < 1000) +
-            0.1 * (data['account_age_months'] < 12)
-    ).clip(0, 1)
-    churn_prob = churn_prob / churn_prob.max() * churn_rate  # Scale to desired churn rate
-    data['churned'] = np.random.binomial(1, churn_prob, n_samples)
-
-    # Create DataFrame
     df = pd.DataFrame(data)
 
-    # Introduce missing values
-    for col in df.columns:
-        if col != 'churned':  # Don't add missing values to target
-            mask = np.random.random(n_samples) < MISSING_RATE
-            df.loc[mask, col] = np.nan
+    # Generate realistic churn labels with meaningful patterns
+    churn_factors = (
+            0.3 * (df['satisfaction_rating'] == 1) +
+            0.2 * (df['complaints_count'] > 2) +
+            0.15 * (df['is_dormant'] == 1) +
+            0.1 * (df['mobile_banking_active'] == 0) +
+            0.05 * (df['avg_balance'] < 1000) +
+            0.05 * (df['days_since_last_complaint'] < 30) +
+            0.15 * np.random.uniform(0, 1, size=num_samples)
+    )
+
+    # Normalize and apply churn rate
+    churn_prob = churn_factors / churn_factors.max() * churn_rate * 1.5
+    df['churned'] = np.random.binomial(1, churn_prob)
+
+    # Adjust actual churn rate to match target
+    current_rate = df['churned'].mean()
+    if current_rate > 0:
+        adjustment = churn_rate / current_rate
+        churn_prob = np.minimum(churn_prob * adjustment, 0.95)
+        df['churned'] = np.random.binomial(1, churn_prob)
 
     return df
 
 
-# Generate training and testing data
-train_df = generate_data(TRAIN_SIZE, CHURN_RATE)
-test_df = generate_data(TEST_SIZE, CHURN_RATE)
+def create_train_test_datasets():
+    """Generate and save training and test datasets"""
+    # Generate full dataset
+    full_data = generate_customer_data(num_samples=15000, churn_rate=0.25)
 
-# Save to CSV
-train_df.to_csv('train.csv', index=False)
-test_df.to_csv('test.csv', index=False)
+    # Split into train and test (80/20)
+    train_data = full_data.sample(frac=0.8, random_state=42)
+    test_data = full_data.drop(train_data.index)
 
-print(f"Generated training data: {train_df.shape}, Churn distribution: {train_df['churned'].value_counts().to_dict()}")
-print(f"Generated testing data: {test_df.shape}, Churn distribution: {test_df['churned'].value_counts().to_dict()}")
+    # Save to CSV files
+    train_data.to_csv('churn_train_dataset.csv', index=False)
+    test_data.to_csv('churn_test_dataset.csv', index=False)
+
+    print(f"Training dataset created with {len(train_data)} samples")
+    print(f"Test dataset created with {len(test_data)} samples")
+    print(f"Training churn rate: {train_data['churned'].mean():.2%}")
+    print(f"Test churn rate: {test_data['churned'].mean():.2%}")
+
+
+if __name__ == "__main__":
+    create_train_test_datasets()
