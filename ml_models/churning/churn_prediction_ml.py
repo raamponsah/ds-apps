@@ -1,7 +1,7 @@
 import logging
+
 import joblib
 import pandas as pd
-import numpy as np
 from django.db import transaction
 from imblearn.over_sampling import SMOTE
 from sklearn.calibration import CalibratedClassifierCV
