@@ -1,0 +1,26 @@
+/* admin_custom.css */
+body {
+    background-color: #f7f9fc;
+}
+
+.module caption {
+    color: #2a3f54;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#header {
+    width: auto;
+    height: auto;
+    display: flex
+;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: #ba2121;
+    color: var(--header-color);
+}
+
+#branding h1 {
+    color: #ffffff;
+}

@@ -1,0 +1,101 @@
+age,gender,region,marital_status,occupation,education,dependents,account_type,account_age_months,num_products,avg_balance,is_dormant,mobile_banking_active,monthly_mobile_logins,ussd_usage,internet_banking_active,atm_txns_per_month,account_linkage_active,monthly_deposits,monthly_withdrawals,monthly_transfers,loan_repayment_history,complaints_count,days_since_last_complaint,satisfaction_rating,has_rel_manager,sector,monthly_fees,churned
+58,Male,Greater Accra,Divorced,Engineer,Primary,1,Business,27,5,8785.19,False,True,1,True,True,7,True,2850.1,3608.5,2118.91,0.42,7,301,2.1,True,SME,35.21,False
+35,Male,Ashanti,Divorced,Teacher,None,3,Savings,92,3,60412.23,True,False,34,True,False,2,False,4164.08,3130.75,2592.04,0.58,1,23,3.6,False,Retail,42.91,True
+42,Female,Eastern,Divorced,Engineer,Secondary,2,Savings,172,3,70211.85,True,True,34,True,True,14,False,1422.74,4634.42,2080.08,0.22,5,28,1.9,True,Corporate,20.66,True
+31,Female,Ashanti,Widowed,Banker,Tertiary,1,Current,36,2,74524.4,False,False,37,False,False,7,True,2596.68,545.46,188.99,0.11,10,81,4.2,False,Retail,19.85,False
+51,Female,Western,Single,Student,None,5,Business,193,3,76883.01,False,True,18,False,True,14,True,4773.7,4391.68,827.0,0.5,2,259,4.7,False,SME,8.49,True
+52,Male,Western,Divorced,Banker,None,0,Current,225,3,24021.29,True,True,5,False,True,17,True,729.12,2428.88,1671.92,0.27,9,216,4.9,True,Corporate,20.55,False
+46,Female,Greater Accra,Married,Engineer,None,2,Savings,151,5,23088.46,True,True,4,True,True,2,True,4312.21,447.2,752.11,0.67,3,276,1.5,False,SME,39.45,False
+30,Male,Greater Accra,Widowed,Trader,Tertiary,3,Current,222,1,67369.12,True,True,25,False,True,7,True,1032.02,2298.21,1294.55,0.28,3,38,2.8,True,Retail,32.96,True
+23,Male,Ashanti,Widowed,Banker,Tertiary,1,Current,232,1,16547.25,True,False,16,False,False,13,False,858.5,1553.87,2907.69,0.58,8,31,4.0,True,Retail,29.62,True
+21,Male,Ashanti,Single,Farmer,None,5,Savings,104,1,94165.45,True,True,39,True,False,18,False,4680.06,1100.87,2162.77,0.24,6,67,3.7,False,Agriculture,16.49,True
+18,Female,Western,Single,Teacher,Postgraduate,1,Business,68,2,93332.61,True,True,23,False,True,14,False,3097.22,4937.44,1979.23,0.01,8,153,4.7,True,SME,13.96,True
+65,Male,Northern,Divorced,Farmer,Primary,5,Current,53,3,50590.36,False,True,5,False,False,1,True,1734.43,741.02,2940.4,0.16,7,282,3.8,True,Retail,4.69,True
+52,Male,Northern,Married,Banker,Primary,0,Current,94,1,89902.57,True,True,42,True,False,17,False,4871.8,3772.44,2781.0,0.24,2,90,4.5,True,SME,37.09,False
+68,Female,Volta,Married,Trader,Primary,5,Savings,98,1,85873.47,True,True,29,False,False,7,True,215.96,1046.34,1018.37,0.86,4,179,3.6,False,Corporate,47.02,True
+34,Male,Western,Divorced,Teacher,None,4,Current,89,3,43695.75,True,False,36,True,False,1,False,108.29,4635.32,1638.43,0.72,10,100,2.5,True,Corporate,31.53,True
+64,Female,Western,Divorced,Student,Tertiary,2,Current,179,3,55485.81,True,False,42,False,True,19,False,2089.77,4185.25,946.43,0.21,9,310,3.6,False,Agriculture,22.67,True
+50,Female,Volta,Married,Student,None,2,Business,170,5,33585.31,True,False,14,True,True,0,True,1299.73,2428.17,2556.73,0.07,6,322,3.3,False,Agriculture,20.58,True
+59,Male,Greater Accra,Widowed,Engineer,Primary,5,Business,119,1,55784.84,True,False,8,False,False,14,False,4169.79,2784.57,2696.76,0.74,7,230,2.0,True,Corporate,38.52,False
+58,Male,Northern,Widowed,Teacher,Secondary,1,Current,86,3,89313.38,True,True,9,True,False,4,True,414.72,2097.24,1650.7,0.42,3,215,2.6,True,Agriculture,24.37,False
+37,Female,Eastern,Married,Banker,Primary,2,Current,125,1,38946.83,False,True,29,True,True,12,True,511.34,2200.2,2607.21,0.18,4,194,2.3,False,Corporate,17.54,False
+35,Female,Northern,Single,Banker,None,5,Business,14,3,22499.79,True,True,48,True,True,6,True,3144.54,1268.87,1447.01,0.11,3,238,3.8,False,SME,30.69,True
+67,Male,Northern,Single,Farmer,None,2,Business,174,4,39725.78,True,True,37,True,True,9,True,4001.51,2873.07,171.15,0.53,10,189,1.3,False,Retail,42.63,False
+24,Female,Northern,Widowed,Student,Primary,3,Savings,188,5,96550.83,False,False,29,False,False,10,True,4170.58,524.65,2650.81,0.24,7,291,3.4,False,Corporate,2.41,False
+29,Female,Ashanti,Divorced,Trader,Secondary,2,Business,180,3,55623.52,True,True,15,False,False,17,True,3483.99,3264.92,1497.92,0.79,1,150,1.9,True,Corporate,33.53,False
+48,Female,Eastern,Divorced,Trader,Tertiary,2,Current,65,2,12153.52,True,False,7,True,True,6,False,1454.85,2988.98,2292.61,0.6,1,99,2.2,False,SME,15.81,True
+35,Male,Greater Accra,Divorced,Student,Primary,5,Current,27,1,57449.02,False,False,28,False,True,1,False,4711.21,2440.87,2475.24,0.4,1,295,3.5,True,SME,8.31,False
+23,Male,Greater Accra,Widowed,Farmer,Postgraduate,4,Savings,199,5,38099.76,False,False,37,False,False,18,True,3087.19,3726.44,2845.39,0.21,3,135,3.6,True,SME,9.52,True
+28,Male,Eastern,Widowed,Student,Postgraduate,3,Current,9,2,28881.68,False,False,4,True,False,20,True,2183.18,2768.36,1960.52,0.91,2,36,1.2,False,Corporate,22.52,False
+62,Female,Volta,Widowed,Trader,Postgraduate,4,Current,113,1,59843.86,False,False,38,False,True,2,True,4813.36,4196.2,1746.84,0.95,10,137,3.3,True,Agriculture,26.43,False
+35,Male,Western,Widowed,Student,Tertiary,0,Current,90,4,33397.51,True,True,21,False,False,9,False,4086.47,2795.47,1391.74,0.31,5,59,4.9,False,Retail,33.23,False
+44,Male,Ashanti,Divorced,Farmer,Tertiary,5,Current,195,1,20435.47,True,False,28,False,True,0,True,3577.94,1622.68,90.34,0.41,3,58,2.8,True,SME,25.42,False
+50,Female,Eastern,Widowed,Banker,Primary,3,Business,38,4,19141.98,True,True,17,False,False,16,False,4120.69,1485.91,930.74,0.59,10,250,4.5,False,Agriculture,17.91,False
+47,Female,Ashanti,Married,Farmer,Tertiary,1,Current,12,3,74496.04,False,False,42,True,False,1,True,2561.23,2991.88,2615.62,0.87,7,51,3.1,False,Retail,36.4,False
+59,Male,Greater Accra,Widowed,Trader,Secondary,4,Business,102,1,85191.35,False,False,40,False,True,19,True,1250.37,3453.56,897.77,0.23,1,222,4.9,True,Agriculture,9.15,False
+19,Male,Northern,Single,Trader,Secondary,2,Current,38,2,53163.52,True,True,11,True,False,19,True,2538.57,2957.47,734.96,0.64,7,130,3.7,False,Corporate,34.2,True
+22,Female,Northern,Divorced,Student,Tertiary,5,Current,117,3,20001.78,False,False,6,True,False,18,False,2916.58,4964.19,920.93,0.98,10,202,2.1,True,Agriculture,41.81,False
+67,Male,Western,Divorced,Engineer,Primary,4,Current,174,2,62861.99,True,False,50,False,True,18,False,3688.56,541.65,920.58,0.75,2,102,1.5,False,Corporate,41.69,False
+70,Female,Northern,Divorced,Teacher,Tertiary,0,Savings,194,2,86028.05,False,False,5,False,True,8,True,2328.45,3396.86,2033.41,0.58,10,190,1.4,True,Agriculture,2.23,False
+57,Male,Volta,Single,Student,Tertiary,5,Current,167,4,11755.93,True,True,19,False,True,3,True,4447.57,764.75,1388.25,0.67,8,214,3.3,True,Agriculture,33.09,False
+57,Female,Northern,Single,Student,Secondary,1,Current,114,2,85559.47,True,False,34,False,True,12,False,1030.06,698.58,2551.7,0.45,10,108,3.6,True,Retail,39.55,True
+26,Male,Greater Accra,Married,Farmer,Primary,1,Current,199,2,78885.51,True,False,9,True,False,5,True,3339.18,226.32,93.84,0.79,3,301,2.3,True,Corporate,3.57,False
+51,Male,Volta,Single,Banker,Tertiary,2,Business,152,1,45255.34,True,True,46,False,False,20,True,398.04,2447.01,1234.77,0.69,7,364,4.6,True,Retail,16.78,True
+22,Male,Northern,Divorced,Banker,Postgraduate,4,Current,117,5,60582.14,True,True,41,True,False,14,True,2127.69,4154.35,1226.25,0.73,5,218,2.3,False,Corporate,47.73,False
+22,Male,Greater Accra,Single,Banker,None,5,Business,96,2,55681.44,False,True,26,False,False,1,False,3042.01,1823.07,1754.86,0.21,10,246,1.9,True,Corporate,42.42,False
+25,Female,Western,Married,Banker,Postgraduate,4,Business,173,5,2722.76,False,True,11,False,False,10,False,129.92,4362.33,1720.65,0.4,2,324,4.9,True,SME,19.43,False
+39,Male,Northern,Divorced,Student,Secondary,4,Business,22,1,15642.43,True,True,17,False,False,15,False,2129.5,1156.29,1561.42,0.35,1,145,3.7,False,Corporate,3.23,False
+56,Male,Greater Accra,Married,Trader,Primary,1,Current,75,3,12086.44,False,False,11,True,False,17,True,2551.29,4183.44,2428.29,0.07,0,223,1.1,True,Corporate,29.21,False
+63,Female,Northern,Single,Banker,None,2,Savings,206,5,46063.68,False,True,27,True,True,13,False,2667.42,2039.26,965.31,0.34,5,86,1.3,True,SME,45.39,False
+40,Male,Ashanti,Single,Engineer,Secondary,1,Savings,155,2,76045.51,True,True,49,False,False,18,False,3437.55,4422.04,1946.83,0.99,5,321,2.3,False,Retail,23.98,False
+68,Female,Western,Single,Trader,Postgraduate,0,Current,119,4,3856.96,False,False,4,True,False,14,True,2303.7,4068.1,1972.92,0.32,7,256,1.6,True,Agriculture,6.07,False
+63,Male,Western,Married,Teacher,Primary,5,Current,113,5,52322.53,True,False,23,False,False,13,False,3426.6,356.59,1911.12,0.33,5,48,3.2,False,Corporate,13.35,True
+39,Male,Western,Married,Trader,Secondary,5,Business,170,4,12982.27,True,False,35,False,False,4,True,3265.52,2174.69,1117.39,0.36,2,109,2.4,False,SME,12.1,True
+27,Male,Northern,Single,Farmer,Postgraduate,5,Business,10,3,87651.64,True,False,9,True,True,19,True,3633.8,314.09,1124.68,0.72,7,312,2.1,False,SME,27.17,False
+69,Female,Ashanti,Divorced,Student,Postgraduate,3,Current,197,3,77834.59,False,True,12,True,False,1,False,4383.17,2817.25,352.64,0.85,1,145,1.3,True,Corporate,23.02,True
+45,Male,Ashanti,Widowed,Trader,None,3,Savings,102,5,37458.75,False,True,23,True,True,10,True,4211.96,3284.81,2384.57,0.14,4,241,3.8,True,Agriculture,22.98,True
+23,Male,Northern,Married,Engineer,Postgraduate,5,Business,136,4,11207.57,False,True,19,True,True,7,False,3230.86,3151.77,235.28,0.84,7,305,3.1,True,SME,15.27,True
+57,Female,Ashanti,Widowed,Engineer,None,4,Current,18,5,54453.79,True,False,30,True,False,11,False,3761.85,1849.76,249.3,0.24,10,321,1.4,False,SME,3.17,False
+70,Male,Volta,Widowed,Student,Tertiary,5,Savings,208,2,6403.74,False,True,18,True,True,6,True,1646.42,1619.37,1224.76,0.82,7,129,1.1,True,Corporate,18.49,True
+59,Female,Northern,Single,Trader,Tertiary,3,Business,113,4,33969.76,True,False,44,False,False,16,False,4025.63,3662.7,282.83,0.6,2,279,2.2,True,Retail,17.07,False
+37,Female,Western,Widowed,Engineer,Tertiary,2,Current,11,3,61523.66,False,False,40,True,True,20,False,1880.22,4025.37,2054.26,0.95,2,311,3.7,False,Retail,7.19,True
+67,Female,Northern,Widowed,Farmer,None,4,Savings,174,4,94887.47,False,False,48,True,True,16,False,2050.37,3282.85,786.35,0.11,2,255,3.1,True,Corporate,38.97,False
+31,Female,Volta,Widowed,Engineer,None,1,Savings,116,2,89878.04,False,True,43,False,False,2,False,4467.53,4271.67,2149.84,0.93,10,89,4.2,True,Retail,49.27,True
+33,Female,Greater Accra,Divorced,Farmer,Postgraduate,2,Current,206,5,13064.15,True,True,19,False,False,16,False,3868.91,4134.36,267.56,0.97,10,37,2.8,False,SME,44.02,True
+67,Male,Eastern,Single,Teacher,Postgraduate,1,Current,43,2,32333.81,True,False,33,False,True,8,True,3211.78,2799.12,419.25,0.3,8,47,3.0,True,SME,9.39,False
+54,Male,Greater Accra,Single,Teacher,Postgraduate,2,Business,54,5,41717.02,True,False,40,False,False,15,True,4042.97,3456.46,927.43,0.07,0,80,2.8,False,Agriculture,11.0,True
+38,Female,Volta,Divorced,Banker,Primary,2,Business,144,1,31979.68,False,True,17,False,True,4,True,347.97,4732.39,2599.28,0.42,2,167,4.7,False,SME,38.39,False
+50,Female,Eastern,Divorced,Banker,None,0,Current,130,4,96671.99,True,False,3,True,False,15,False,1500.17,140.07,367.12,0.13,4,187,4.1,False,Retail,20.63,True
+41,Female,Greater Accra,Widowed,Farmer,Tertiary,4,Current,212,5,68071.82,True,True,6,False,False,10,False,3799.33,1075.38,1551.91,0.5,0,19,1.5,False,Agriculture,26.45,True
+56,Male,Northern,Divorced,Engineer,Tertiary,4,Business,216,3,59413.09,False,False,30,True,False,10,True,4901.5,2960.14,2400.43,0.73,10,13,3.4,False,SME,36.35,False
+28,Female,Ashanti,Married,Teacher,Postgraduate,5,Savings,49,1,44159.75,False,True,26,True,False,16,False,4376.81,3705.6,233.73,0.14,3,287,2.3,False,Agriculture,16.37,True
+47,Female,Western,Divorced,Student,Secondary,4,Current,50,2,27972.74,False,True,19,False,True,15,False,2451.04,2846.39,2806.73,0.72,4,62,3.3,False,Agriculture,41.1,True
+36,Male,Northern,Single,Trader,Tertiary,5,Current,192,4,21477.28,False,False,8,True,True,7,True,3382.19,2702.1,1931.94,0.05,6,169,3.9,True,SME,1.25,True
+44,Female,Eastern,Married,Trader,Secondary,2,Business,16,1,65264.64,True,True,11,False,True,1,False,3961.01,1012.93,2259.56,0.87,4,19,1.0,True,Corporate,14.94,False
+26,Female,Northern,Married,Teacher,Secondary,1,Business,118,3,71887.96,True,False,50,False,True,5,False,4152.25,2624.88,305.88,0.67,2,71,2.9,True,Retail,13.78,True
+46,Female,Northern,Divorced,Farmer,Postgraduate,0,Current,168,3,69307.58,True,True,29,False,True,12,False,3482.42,3229.69,2824.88,0.37,3,112,4.8,False,SME,23.29,False
+44,Female,Western,Married,Engineer,Postgraduate,0,Business,115,5,70406.24,True,True,3,True,True,5,False,4286.98,2265.02,2056.87,0.72,7,46,4.6,False,Retail,23.22,False
+47,Male,Western,Widowed,Student,Secondary,5,Savings,102,3,81663.68,True,True,2,False,False,2,True,4679.46,438.19,2804.64,0.03,6,92,4.1,False,Corporate,49.65,False
+46,Female,Eastern,Single,Student,Postgraduate,1,Business,221,3,11951.45,False,True,46,True,True,0,False,2368.72,3623.56,1301.18,0.38,3,126,2.8,True,Corporate,10.24,True
+20,Female,Western,Single,Engineer,Primary,0,Savings,153,1,44699.46,True,True,47,True,False,14,True,2744.82,3796.49,2339.39,0.14,4,119,4.3,False,Corporate,12.61,True
+60,Male,Eastern,Divorced,Trader,None,4,Business,226,2,62636.71,False,False,3,False,False,16,False,3511.91,2100.47,934.67,0.18,8,242,2.0,True,Corporate,43.02,True
+69,Female,Greater Accra,Widowed,Banker,Postgraduate,4,Savings,100,2,25574.06,False,True,28,False,True,17,True,352.53,1948.12,1834.66,0.04,1,96,4.2,True,Agriculture,11.24,False
+37,Male,Ashanti,Married,Student,None,5,Current,235,2,69593.07,True,False,15,False,False,12,False,2714.89,1860.37,821.61,0.51,7,238,1.4,False,Corporate,45.8,False
+38,Female,Greater Accra,Married,Student,Primary,0,Current,142,5,57956.38,False,False,9,True,False,7,False,2891.97,1304.08,1674.4,0.94,5,131,4.1,False,Agriculture,23.58,False
+28,Male,Volta,Widowed,Engineer,Postgraduate,5,Savings,135,1,83922.94,True,True,48,True,False,4,True,433.04,840.05,695.22,0.46,0,316,3.6,False,Agriculture,1.77,False
+18,Male,Western,Divorced,Farmer,Secondary,0,Business,209,4,80636.15,True,True,6,True,True,6,False,4094.55,1409.89,1220.84,0.37,6,235,3.3,True,Corporate,34.52,True
+59,Male,Greater Accra,Widowed,Banker,Tertiary,4,Current,15,1,70314.23,True,False,27,False,True,16,True,1225.86,4516.24,2092.25,0.57,4,23,4.7,False,Retail,9.79,False
+19,Male,Western,Married,Student,Tertiary,0,Current,42,5,24123.17,False,False,24,True,True,16,False,363.11,2241.73,2524.09,0.34,9,304,2.6,False,Retail,32.07,False
+49,Male,Northern,Widowed,Banker,Primary,5,Business,170,4,8660.84,False,True,45,True,True,8,True,1962.0,3941.06,505.12,0.39,5,54,1.4,False,Agriculture,18.64,False
+24,Male,Greater Accra,Married,Banker,Tertiary,4,Business,132,4,10418.96,True,False,35,True,False,12,True,1530.05,2000.22,299.86,0.9,3,292,3.1,False,SME,7.8,False
+35,Female,Ashanti,Single,Engineer,Tertiary,2,Current,77,4,78288.4,False,False,15,False,True,14,True,763.9,133.16,1217.29,0.84,6,168,2.8,False,SME,15.72,True
+48,Female,Ashanti,Widowed,Trader,Secondary,5,Business,163,4,96779.53,True,False,24,False,False,11,True,4667.13,1079.02,2991.93,0.18,8,13,4.8,False,SME,22.48,False
+62,Male,Eastern,Widowed,Engineer,Secondary,1,Current,169,2,71552.12,False,True,28,False,False,17,False,2763.86,3974.53,1110.61,0.9,8,304,3.6,True,Retail,38.68,False
+28,Male,Western,Widowed,Trader,Tertiary,0,Savings,26,3,22277.91,True,False,23,False,False,18,True,1790.34,220.36,358.42,0.42,1,59,4.3,True,Corporate,16.28,False
+68,Male,Western,Widowed,Trader,Tertiary,0,Current,185,4,31959.06,False,True,45,True,True,10,True,3417.98,905.34,2952.51,0.24,2,282,1.6,False,Agriculture,12.36,False
+58,Male,Ashanti,Widowed,Banker,None,5,Business,227,2,45012.54,False,False,0,True,True,8,True,2929.0,4017.56,1633.82,0.37,3,234,1.5,False,Corporate,30.25,False
+55,Male,Northern,Divorced,Banker,Postgraduate,1,Business,181,3,91876.39,True,True,20,True,True,9,True,996.92,3497.84,1556.93,0.42,2,294,2.5,True,Agriculture,32.14,True
+53,Male,Eastern,Divorced,Engineer,Primary,2,Current,159,1,86565.67,True,False,8,True,False,17,False,2104.76,2509.46,2144.92,0.44,2,42,3.3,True,Corporate,2.6,True
+52,Female,Ashanti,Widowed,Farmer,Tertiary,4,Business,29,5,11509.24,False,True,48,False,True,13,True,3706.34,3302.99,780.22,0.87,0,230,2.1,True,Agriculture,43.4,True
+67,Male,Ashanti,Divorced,Student,Postgraduate,5,Current,43,5,14009.57,True,True,3,False,False,19,True,1685.9,3549.86,903.53,0.27,8,347,4.3,True,Agriculture,46.02,False
+59,Male,Volta,Married,Engineer,Primary,5,Current,213,2,76171.21,False,False,9,False,False,12,False,470.03,3993.53,2318.21,0.4,4,355,4.7,False,Agriculture,47.56,False
