@@ -16,12 +16,14 @@ logger = logging.getLogger(__name__)
 
 # Required columns (excluding 'churned')
 required_columns = [
+
     'age', 'gender', 'region', 'marital_status', 'occupation', 'education', 'dependents',
     'account_type', 'account_age_months', 'num_products', 'avg_balance', 'is_dormant',
     'mobile_banking_active', 'monthly_mobile_logins', 'ussd_usage', 'internet_banking_active',
     'atm_txns_per_month', 'account_linkage_active', 'monthly_deposits', 'monthly_withdrawals',
     'monthly_transfers', 'loan_repayment_history', 'complaints_count', 'days_since_last_complaint',
     'satisfaction_rating', 'has_rel_manager', 'sector', 'monthly_fees'
+
 ]
 
 
