@@ -73,3 +73,17 @@ class UserDownloadHistory(models.Model):
         return f"{self.user.username} downloaded {self.spool_report_downloaded} at {self.timestamp}"
 
 
+    def save(self, *args, **kwargs):
+        if not self.pk:  # Only for new entries
+
+            user_entries = self.__class__.objects.filter(user=self.user)
+            current_count = user_entries.count()
+            if current_count >= 5:
+                # Calculate how many entries to delete (to keep only 4, so new one makes 5)
+                excess_count = current_count - 4
+                # Delete the oldest entries (based on timestamp)
+                oldest_entries = user_entries.order_by('timestamp')[:excess_count]
+                for entry in oldest_entries:
+                    entry.delete()
+        super().save(*args, **kwargs)
+
