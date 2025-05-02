@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}DS Apps{% endblock %}</title>
-{#    favicon #}
-<link rel="icon" href="{% static 'favicon.ico' %}">
-
+    <link rel="icon" href="{% static 'favicon.ico' %}">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
       body {
         background-color: #dcdbdb;
+        min-height: 100vh;
+        position: relative;
+        padding-bottom: 60px; /* Height of footer */
       }
       .avatar {
         width: 32px;
@@ -24,32 +24,49 @@
         border-radius: 50%;
         object-fit: cover;
       }
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px; /* Set footer height */
+        background-color: #f8f9fa;
+      }
+      .footer-text {
+        text-align: right;
+        padding-right: 20px;
+        line-height: 60px; /* Center text vertically */
+      }
     </style>
   </head>
 
   <body>
-  {% block navbar %}
+    {% block navbar %}
     <!-- Navbar -->
-  {% endblock %}
+    {% endblock %}
 
-  {% if messages %}
-  <div class="container mt-3">
-    {% for message in messages %}
-      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-        {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
-
-
+    {% if messages %}
+    <div class="container mt-3">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
 
     <!-- Main Content -->
     <main>
       {% block content %}
       {% endblock %}
     </main>
+
+    <!-- Footer -->
+    <footer style="background-color: #f8f9fa; border-top: 4px solid red;">
+      <div class="footer-text text-danger">
+        CBG Data Science Department. &copy; 2025 All Rights Reserved.
+      </div>
+    </footer>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>

@@ -6,6 +6,7 @@ import re
 
 import msoffcrypto
 import pandas as pd
+import pyzipper
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -136,11 +137,9 @@ def generate_report(request, report_code: str):
 
             df = pd.DataFrame(data, columns=columns)
 
-            # Write Excel to memory
             excel_io = io.BytesIO()
             with pd.ExcelWriter(excel_io, engine='openpyxl') as writer:
                 df.to_excel(writer, sheet_name='Report', index=False)
-
                 worksheet = writer.sheets['Report']
                 for idx, col in enumerate(df.columns):
                     try:
@@ -149,6 +148,7 @@ def generate_report(request, report_code: str):
                         worksheet.column_dimensions[column_letter].width = min(max_length + 2, 50)
                     except Exception as e:
                         logger.warning(f"Failed to adjust width for column {col}: {str(e)}")
+
                 workbook = writer.book
                 workbook.properties.title = "Confidential Report"
                 workbook.properties.keywords = "Confidential, Internal Use Only"
@@ -156,26 +156,26 @@ def generate_report(request, report_code: str):
 
             excel_io.seek(0)
 
-            # Password-protect using msoffcrypto
-            # password = "SuperSecure123!"
+
             password = generate_random_ad_password(password_length=8)
-            # generate email to send password to user email
+
 
             encrypted_io = io.BytesIO()
 
             office_file = msoffcrypto.OfficeFile(excel_io)
-
             office_file.encrypt(password, encrypted_io)
             # office_file.save(encrypted_io)
             encrypted_io.seek(0)
 
-            # Prepare response
+
             response = HttpResponse(
                 encrypted_io.read(),
                 content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
             )
+
+
             timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"{spool.report_code}_report_{timestamp}.xlsx"
+            filename = f"{spool.report_code}_report_{timestamp}.csv"
             response['Content-Disposition'] = f'attachment; filename="{filename}"'
             request.session['file_password'] = password
 
@@ -202,6 +202,4 @@ def generate_report(request, report_code: str):
     except Exception as e:
         logger.error(f"Unexpected error for report {report_code}: {str(e)}")
         return render(request, "500.html", {"message": "An unexpected error occurred"}, status=500)
-
-
 
