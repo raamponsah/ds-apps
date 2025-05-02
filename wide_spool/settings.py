@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'spool_app.apps.SpoolAppConfig',
     'home_apps.apps.HomeAppsConfig',
     'churn_app.apps.ChurnAppConfig',
+    'clv_prediction.apps.ClvPredictionConfig',
 
 ]
 
@@ -154,3 +155,5 @@ AUTHENTICATION_BACKENDS = [
 
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 200000
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+

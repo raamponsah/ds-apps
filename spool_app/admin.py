@@ -5,7 +5,8 @@ from django.contrib import admin, messages
 from django.urls import path
 from django.shortcuts import render, redirect
 
-from .models import Spool
+from ai_sql_app import models
+from .models import Spool, UserDownloadHistory
 
 
 class CsvImportForm(forms.Form):
@@ -62,5 +63,11 @@ class MyAdminSite(AdminSite):
         css = {
             'all': ('spool_app/css/admin_custom.css',)
         }
+
+
+
+@admin.register(UserDownloadHistory)
+class UserDownloadHistoryAdmin(admin.ModelAdmin):
+    list_display = ["user", "spool_report_downloaded", "spool_report_password", "timestamp"]
 
 admin_site = MyAdminSite()

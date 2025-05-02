@@ -1,7 +1,10 @@
 import random
 import string
 
+from django.contrib.auth import get_user_model
 from django.db import models
+
+User = get_user_model()
 
 
 def generate_report_code():
@@ -47,14 +50,26 @@ class Spool(models.Model):
             self.report_code = generate_report_code()
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         ordering = ["report_code"]
 
 
 
+class UserDownloadHistory(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    spool_report_downloaded = models.ForeignKey(Spool, related_name='spool_report_downloaded', on_delete=models.CASCADE)
+    spool_report_password = models.CharField(null=True, blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["timestamp"]
+        verbose_name = "User Download History"
+        verbose_name_plural = "User Download Histories"
 
     def __str__(self):
-        return self.report_code
-
+        return f"{self.user.username} downloaded {self.spool_report_downloaded} at {self.timestamp}"
 
 

@@ -1,5 +1,4 @@
 import logging
-
 import joblib
 import pandas as pd
 from django.db import transaction

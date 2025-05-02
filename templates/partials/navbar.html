@@ -27,6 +27,7 @@
                   {{ user.username | username_to_fullname}}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="userDropdown">
+
                   <li>
                       <form method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
