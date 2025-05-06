@@ -16,6 +16,8 @@ admin.site.index_title = "Site administration"
 urlpatterns = [
        path("", include("home_apps.urls")),
        path("spooled-reports/", include("spool_app.urls")),
+       path("anansi-ai/", include("ai_sql_app.urls")),
+       path("power-bi-reports/", include("power_bi_reports_app.urls")),
        path("churn-dashboard/", include("churn_app.urls")),
        path('login/', LoginSpoolView.as_view(), name='login'),
        path('logout/', LogoutView.as_view(next_page='login'), name='logout'),

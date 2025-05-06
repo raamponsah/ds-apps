@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load user_filters %}
+
+{% block navbar %}
+  {% include 'partials/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+
+      <div class="card shadow rounded-1" style="border-top: 4px solid #dc3545;">
+        <div class="card-body">
+
+
+
+          <h4 class="text-center mb-4">Available Power BI Reports</h4>
+
+          <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+              <thead class="table-success">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for report in power_bi_reports %}
+                  <tr>
+                    <td>{{ report.name }}</td>
+                    <td>
+                      <button
+                        onclick="openPopup('{% url 'power_bi_report' report.pk %}')"
+                        class="btn btn-sm btn-outline-primary"
+                      >
+                        Open Report
+                      </button>
+                    </td>
+                  </tr>
+                {% empty %}
+                  <tr>
+                    <td colspan="2" class="text-center text-muted">No reports found.</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+            <nav aria-label="Page navigation">
+              <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                  <li class="page-item"><a class="page-link" href="?page=1">&laquo;&laquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                  <li class="page-item disabled"><span class="page-link">&laquo;&laquo;</span></li>
+                  <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                {% endif %}
+
+                <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+
+                {% if page_obj.has_next %}
+                  <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&raquo;&raquo;</a></li>
+                {% else %}
+                  <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                  <li class="page-item disabled"><span class="page-link">&raquo;&raquo;</span></li>
+                {% endif %}
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function openPopup(url) {
+    const width = screen.width; // Full screen width
+    const height = screen.height; // Full screen height
+    const left = 0; // Align to the left edge
+    const top = 0; // Align to the top edge
+
+    // Attempt to open a fullscreen or maximized window
+    window.open(
+      url,
+      '_blank',
+      `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes,fullscreen=yes`
+    );
+  }
+</script>
+
+
+{% endblock %}

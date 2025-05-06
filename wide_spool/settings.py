@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'home_apps.apps.HomeAppsConfig',
     'churn_app.apps.ChurnAppConfig',
     'clv_prediction.apps.ClvPredictionConfig',
+    'ai_sql_app.apps.AiSqlAppConfig',
+    'power_bi_reports_app.apps.PowerBiReportsAppConfig',
 
 ]
 

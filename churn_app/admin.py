@@ -29,6 +29,7 @@ class BankCustomerAdmin(admin.ModelAdmin):
 class TestingCustomerAdmin(admin.ModelAdmin):
     change_list_template = "admin/spool_changelist.html"
     list_filter = ["churned"]
+    list_display = ["age","account_age_months","gender","churned"]
     def get_urls(self):
         urls = super().get_urls()
         custom_urls = [
