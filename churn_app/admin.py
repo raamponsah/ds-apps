@@ -21,10 +21,6 @@ class BankCustomerAdmin(admin.ModelAdmin):
     ...
 
 
-
-
-
-
 @admin.register(TestingCustomerData)
 class TestingCustomerAdmin(admin.ModelAdmin):
     change_list_template = "admin/spool_changelist.html"
@@ -44,6 +40,19 @@ class TestingCustomerAdmin(admin.ModelAdmin):
                 try:
                     file = TextIOWrapper(request.FILES['csv_file'].file, encoding='utf-8-sig')
                     df = pd.read_csv(file)
+                    df = df[[
+                                'age',
+                                'is_dormant',
+                                'no_products',
+                                'account_age_months',
+                                'monthly_deposit',
+                                'complaints_count',
+                                'days_since_last_complaint',
+                                'mobile_banking_active',
+                                'internet_banking_active',
+                                'ussd_banking_active',
+                                'account_linkage_banking_active'
+                            ]]
 
                     churned_customers = run_churn_test(df, TestingCustomerData)
 

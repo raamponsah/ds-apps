@@ -7,22 +7,24 @@ from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Required columns (excluding 'churned')
 required_columns = [
-
-    'age', 'gender', 'region', 'marital_status', 'occupation', 'education', 'dependents',
-    'account_type', 'account_age_months', 'num_products', 'avg_balance', 'is_dormant',
-    'mobile_banking_active', 'monthly_mobile_logins', 'ussd_usage', 'internet_banking_active',
-    'atm_txns_per_month', 'account_linkage_active', 'monthly_deposits', 'monthly_withdrawals',
-    'monthly_transfers', 'loan_repayment_history', 'complaints_count', 'days_since_last_complaint',
-    'satisfaction_rating', 'has_rel_manager', 'sector', 'monthly_fees'
-
+    'age',
+    'is_dormant',
+    'no_products',
+    'account_age_months',
+    'monthly_deposit',
+    'complaints_count',
+    'days_since_last_complaint',
+    'mobile_banking_active',
+    'internet_banking_active',
+    'ussd_banking_active',
+    'account_linkage_banking_active'
 ]
 
 
@@ -49,7 +51,7 @@ def handle_outliers(df, numerical_cols):
 
 
 def train_churn_model_from_file(file_path):
-    """Train a churn prediction model from a CSV file."""
+    """Training a churn prediction model from a CSV file."""
     try:
         # Read and validate data
         df = pd.read_csv(file_path)
@@ -138,11 +140,13 @@ def train_churn_model_from_file(file_path):
         def evaluate_model(model, X, y, dataset_name):
             y_pred = model.predict(X)
             y_proba = model.predict_proba(X)[:, 1]
+
+            # Adjust the metrics to account for 'YES' as positive class
             metrics = {
                 'accuracy': accuracy_score(y, y_pred),
-                'precision': precision_score(y, y_pred),
-                'recall': recall_score(y, y_pred),
-                'f1_score': f1_score(y, y_pred),
+                'precision': precision_score(y, y_pred, pos_label='YES'),
+                'recall': recall_score(y, y_pred, pos_label='YES'),
+                'f1_score': f1_score(y, y_pred, pos_label='YES'),
                 'roc_auc': roc_auc_score(y, y_proba)
             }
             cm = confusion_matrix(y, y_pred)
@@ -200,21 +204,19 @@ def run_churn_test(df, dj_model):
         scaler = joblib.load("scaler.pkl")
         logger.info("Model, columns, and scaler loaded successfully")
 
-        # Identify categorical columns
+        # Identify categorical columns (optional, based on the data)
         categorical_cols = df.select_dtypes(include=['object', 'bool']).columns.tolist()
-        if 'churned' in categorical_cols:
-            categorical_cols.remove('churned')
 
         # Scale numerical features
         if numerical_cols:
             df[numerical_cols] = scaler.transform(df[numerical_cols])
             logger.info("Numerical features scaled successfully")
 
-        # One-hot encode categorical features
-        input_df = df.drop(columns=['churned'], errors='ignore')
+        # One-hot encode categorical features (if any)
+        input_df = df.drop(columns=['churned'], errors='ignore')  # Ensure 'churned' column is dropped
         X = pd.get_dummies(input_df, columns=categorical_cols, drop_first=True)
 
-        # Align with training columns
+        # Align with training columns (from the trained model)
         X = X.reindex(columns=model_columns, fill_value=0)
         logger.info(f"Feature matrix shape after reindexing: {X.shape}")
 
@@ -234,33 +236,16 @@ def run_churn_test(df, dj_model):
             try:
                 return dj_model(
                     age=int(row['age']),
-                    gender=str(row['gender']),
-                    region=str(row['region']),
-                    marital_status=str(row['marital_status']),
-                    occupation=str(row['occupation']),
-                    education=str(row['education']),
-                    dependents=int(row['dependents']),
-                    account_type=str(row['account_type']),
-                    account_age_months=int(row['account_age_months']),
-                    num_products=int(row['num_products']),
-                    avg_balance=float(row['avg_balance']),
                     is_dormant=bool(row['is_dormant']),
-                    mobile_banking_active=bool(row['mobile_banking_active']),
-                    monthly_mobile_logins=int(row['monthly_mobile_logins']),
-                    ussd_usage=bool(row['ussd_usage']),
-                    internet_banking_active=bool(row['internet_banking_active']),
-                    atm_txns_per_month=int(row['atm_txns_per_month']),
-                    account_linkage_active=bool(row['account_linkage_active']),
-                    monthly_deposits=float(row['monthly_deposits']),
-                    monthly_withdrawals=float(row['monthly_withdrawals']),
-                    monthly_transfers=float(row['monthly_transfers']),
-                    loan_repayment_history=float(row['loan_repayment_history']),
+                    num_products=int(row['no_products']),
+                    account_age_months=int(row['account_age_months']),
+                    monthly_deposits=float(row['monthly_deposit']),
                     complaints_count=int(row['complaints_count']),
                     days_since_last_complaint=int(row['days_since_last_complaint']),
-                    satisfaction_rating=float(row['satisfaction_rating']),
-                    has_rel_manager=bool(row['has_rel_manager']),
-                    sector=str(row['sector']),
-                    monthly_fees=float(row['monthly_fees']),
+                    mobile_banking_active=bool(row['mobile_banking_active']),
+                    internet_banking_active=bool(row['internet_banking_active']),
+                    ussd_banking_active=bool(row['ussd_banking_active']),
+                    account_linkage_banking_active=bool(row['account_linkage_banking_active']),
                     churned=bool(row['churned_pred'])
                 )
             except Exception as e:
@@ -280,3 +265,4 @@ def run_churn_test(df, dj_model):
     except Exception as e:
         logger.error(f"Error in run_churn_test: {str(e)}")
         raise
+

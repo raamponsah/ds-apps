@@ -14,15 +14,28 @@ class CustomerChurnView(TemplateView):
 
 
 def interactive_churned_view(request):
-    keys = [
-        "age", "gender", "region", "marital_status", "occupation", "education",
-        "dependents", "account_type", "account_age_months", "num_products", "avg_balance",
-        "is_dormant", "mobile_banking_active", "monthly_mobile_logins", "ussd_usage",
-        "internet_banking_active", "atm_txns_per_month", "account_linkage_active",
-        "monthly_deposits", "monthly_withdrawals", "monthly_transfers", "loan_repayment_history",
-        "complaints_count", "days_since_last_complaint", "satisfaction_rating",
-        "has_rel_manager", "sector", "monthly_fees", "churned",
-    ]
+    keys = ['sector',
+             'gender',
+             'date_of_birth',
+             'age',
+             'has_rel_manager',
+             'marital_status',
+             'no_of_dependents',
+             'occupation',
+             'co_code',
+             'company_name',
+             'churned',
+             'is_dormant',
+             'no_products',
+             'account_age_months',
+             'monthly_deposit',
+             'complaints_count',
+             'days_since_last_complaint',
+             'mobile_banking_active',
+             'internet_banking_active',
+             'ussd_banking_active',
+             'account_linkage_banking_active'
+            ]
 
     region_filter = request.GET.get('region')
     gender_filter = request.GET.get('gender')
